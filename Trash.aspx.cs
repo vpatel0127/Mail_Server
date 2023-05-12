@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class Trash : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Request["delid"] != null)
+            dbo.setdata("delete from  mails where id = '" + Request["delid"].ToString() + "'");
+        if(Request["t1"] != null)
+            dbo.setdata("update mails set status = 'open' where id = '" + Request["t1"].ToString() + "'");
+
+        System.Data.DataTable dt = dbo.getdata("Select * from mails where fromid = '" + Session["uid"].ToString() + "' and status='deleted'");
+        string s = "<table width=100% border =1>";
+        s += "<tr><td>Srno.<td> Sender Email<td>Subject<td>Message<td>Action<td>Read</tr>";
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            s += "<tr><td>" + (i + 1);
+            System.Data.DataTable dt1 = dbo.getdata("select * from Register where id = '" + dt.Rows[i]["toid"].ToString() + "'");
+            //s += "<td>" + dt1.Rows[0]["name"] + " " + dt1.Rows[0]["surname"].ToString();
+            s += "<td>" + dt1.Rows[0]["username"].ToString();
+            s += "<td>" + dt.Rows[i]["subject"].ToString();
+            string st = dt.Rows[i]["detail"].ToString();
+            st = st.Substring(0, 3) + "....";
+            s += "<td>" + st;
+            //    s += "<td>" + DateTime.Parse(dt.Rows[i]["mdate"].ToString ()).ToShortDateString();
+            // s += "<td><a href='/Mail_Server" + dt.Rows[i]["attach"].ToString() + "'>View</a>";
+            s += "<td><a href='Trash.aspx?delid=" + dt.Rows[i]["Id"].ToString() + "'>Delete</a>";
+            s += "<td><a href='Trash.aspx?t1=" + dt.Rows[i]["Id"].ToString() + "'>Restore</a>";
+            s += "</tr>";
+        }
+        s += "</table>";
+        Literal1.Text = s;
+    }
+}

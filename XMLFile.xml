@@ -1,0 +1,26 @@
+﻿<Advertisements>
+  <Ad>
+    <ImageUrl>ad\ad1.bmp</ImageUrl>
+    <AlternateText>nikff</AlternateText>
+    <NavigateUrl>img/16.png</NavigateUrl>
+    <Impressions>12</Impressions>
+      </Ad>
+  <Ad>
+    <ImageUrl>ad\ad4.bmp</ImageUrl>
+    <AlternateText>nikabc</AlternateText>
+    <NavigateUrl>img/boy.jpeg</NavigateUrl>
+    <Impressions>12</Impressions>
+   </Ad>
+  <Ad>
+    <ImageUrl>ad\ad3.bmp</ImageUrl>
+    <AlternateText>nikxyz</AlternateText>
+      <NavigateUrl>img/girl.jpeg</NavigateUrl>
+      <Impressions>12</Impressions>
+  </Ad>
+  <Ad>
+    <ImageUrl>ad\ad4.bmp</ImageUrl>
+    <AlternateText>nikhh</AlternateText>
+    <NavigateUrl>img/mm.png</NavigateUrl>
+    <Impressions>11</Impressions>
+</Ad>
+  </Advertisements>
